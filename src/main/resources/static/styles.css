@@ -1,0 +1,232 @@
+/* Custom CSS untuk override Bootstrap dan styling tambahan */
+
+/* Import Google Fonts */
+body {
+    font-family: 'Inter', sans-serif;
+}
+
+/* Custom Navbar */
+.custom-navbar {
+    background: rgba(255, 255, 255, 0.95) !important;
+    backdrop-filter: blur(10px);
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.08);
+}
+
+.navbar-brand {
+    color: #1f2937 !important;
+}
+
+.nav-link {
+    font-weight: 500;
+    color: #1f2937 !important;
+    transition: color 0.3s ease;
+}
+
+.nav-link:hover {
+    color: #2563eb !important;
+}
+
+/* Hero Section */
+.hero-section {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding-top: 80px;
+}
+
+.hero-content h1 {
+    line-height: 1.2;
+}
+
+/* Code Preview */
+.code-preview {
+    background: #1f2937;
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.code-header {
+    background: #374151;
+}
+
+.dot {
+    width: 12px;
+    height: 12px;
+}
+
+.code-content {
+    background: #111827;
+}
+
+.code-content pre {
+    font-family: 'Fira Code', 'Courier New', monospace;
+    margin: 0;
+    font-size: 0.9rem;
+    line-height: 1.6;
+}
+
+/* Feature Cards */
+.feature-card {
+    transition: all 0.3s ease;
+    border-radius: 12px !important;
+}
+
+.feature-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15) !important;
+}
+
+.feature-icon {
+    transition: transform 0.3s ease;
+}
+
+.feature-card:hover .feature-icon {
+    transform: scale(1.1);
+}
+
+/* Stats Animation */
+.counter {
+    font-family: 'Inter', sans-serif;
+}
+
+/* Tech Stack */
+.tech-stack-card .badge {
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+/* Contact Cards */
+.contact-info .card {
+    transition: all 0.3s ease;
+}
+
+.contact-info .card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15) !important;
+}
+
+/* Form Styling */
+.form-control {
+    border-radius: 8px;
+    border: 2px solid #e5e7eb;
+    padding: 12px 16px;
+    transition: all 0.3s ease;
+}
+
+.form-control:focus {
+    border-color: #2563eb;
+    box-shadow: 0 0 0 0.2rem rgba(37, 99, 235, 0.25);
+}
+
+/* Button Animations */
+.btn {
+    border-radius: 8px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+}
+
+.btn-warning {
+    background: #fbbf24;
+    border-color: #fbbf24;
+    color: #1f2937;
+}
+
+.btn-warning:hover {
+    background: #f59e0b;
+    border-color: #f59e0b;
+    color: #1f2937;
+}
+
+/* Footer */
+footer a:hover {
+    color: #fbbf24 !important;
+    transition: color 0.3s ease;
+}
+
+/* Animations */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.animate-on-scroll {
+    opacity: 0;
+    animation: fadeInUp 0.6s ease forwards;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .hero-section {
+        text-align: center;
+    }
+    
+    .hero-section .display-4 {
+        font-size: 2.5rem;
+    }
+    
+    .code-preview {
+        margin-top: 2rem;
+    }
+    
+    .stats .col-4 {
+        margin-bottom: 1rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .hero-section .display-4 {
+        font-size: 2rem;
+    }
+    
+    .section-header .display-5 {
+        font-size: 2rem;
+    }
+    
+    .btn-lg {
+        padding: 0.75rem 1.5rem;
+        font-size: 1rem;
+    }
+}
+
+/* Scroll behavior */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Loading animation */
+body {
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+body.loaded {
+    opacity: 1;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #2563eb;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #1d4ed8;
+}

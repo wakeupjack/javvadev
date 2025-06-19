@@ -1,11 +1,411 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>JavaDev - Platform Pengembangan Java</title>
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top custom-navbar">
+        <div class="container">
+            <a class="navbar-brand fw-bold fs-3" href="#home">
+                <i class="bi bi-rocket-takeoff text-primary"></i> JavaDev
+            </a>
+            
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#home">Beranda</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#features">Fitur</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#about">Tentang</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact">Kontak</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero-section">
+        <div class="container">
+            <div class="row align-items-center min-vh-100">
+                <div class="col-lg-6">
+                    <div class="hero-content">
+                        <h1 class="display-4 fw-bold mb-4">
+                            Platform Pengembangan 
+                            <span class="text-warning">Java</span> Modern
+                        </h1>
+                        <p class="lead mb-4">
+                            Kembangkan aplikasi Java yang powerful dan scalable dengan tools dan framework terdepan. 
+                            Mulai perjalanan coding Anda bersama kami.
+                        </p>
+                        <div class="d-flex gap-3 flex-wrap">
+                            <a href="#features" class="btn btn-warning btn-lg px-4">
+                                <i class="bi bi-play-circle me-2"></i>Mulai Sekarang
+                            </a>
+                            <a href="#about" class="btn btn-outline-light btn-lg px-4">
+                                <i class="bi bi-info-circle me-2"></i>Pelajari Lebih Lanjut
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="code-preview shadow-lg">
+                        <div class="code-header d-flex align-items-center p-3">
+                            <div class="code-dots d-flex gap-2 me-3">
+                                <span class="dot bg-danger rounded-circle"></span>
+                                <span class="dot bg-warning rounded-circle"></span>
+                                <span class="dot bg-success rounded-circle"></span>
+                            </div>
+                            <span class="text-light">Main.java</span>
+                        </div>
+                        <div class="code-content p-4">
+                            <pre class="text-light mb-0"><code>public class JavaDev {
+    public static void main(String[] args) {
+        System.out.println("Welcome to JavaDev!");
+        
+        // Start your journey here
+        Developer dev = new Developer();
+        dev.learnJava();
+        dev.buildAwesomeApps();
+    }
+}</code></pre>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="py-5 bg-light">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 mx-auto text-center mb-5">
+                    <h2 class="display-5 fw-bold mb-3">Fitur Unggulan</h2>
+                    <p class="lead text-muted">
+                        Tools dan framework yang akan mempercepat pengembangan aplikasi Java Anda
+                    </p>
+                </div>
+            </div>
+            
+            <div class="row g-4">
+                <div class="col-md-6 col-lg-4">
+                    <div class="card h-100 border-0 shadow-sm feature-card">
+                        <div class="card-body text-center p-4">
+                            <div class="feature-icon mb-3">
+                                <i class="bi bi-cup-hot display-4 text-primary"></i>
+                            </div>
+                            <h5 class="card-title fw-bold">Modern Java Framework</h5>
+                            <p class="card-text text-muted">
+                                Menggunakan Spring Boot, Hibernate, dan framework Java terbaru untuk pengembangan yang efisien.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-6 col-lg-4">
+                    <div class="card h-100 border-0 shadow-sm feature-card">
+                        <div class="card-body text-center p-4">
+                            <div class="feature-icon mb-3">
+                                <i class="bi bi-tools display-4 text-success"></i>
+                            </div>
+                            <h5 class="card-title fw-bold">Development Tools</h5>
+                            <p class="card-text text-muted">
+                                IDE terintegrasi, debugging tools, dan build automation untuk workflow yang lancar.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-6 col-lg-4">
+                    <div class="card h-100 border-0 shadow-sm feature-card">
+                        <div class="card-body text-center p-4">
+                            <div class="feature-icon mb-3">
+                                <i class="bi bi-speedometer2 display-4 text-warning"></i>
+                            </div>
+                            <h5 class="card-title fw-bold">Performance Optimized</h5>
+                            <p class="card-text text-muted">
+                                Aplikasi yang dioptimalkan untuk performa tinggi dan skalabilitas enterprise.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-6 col-lg-4">
+                    <div class="card h-100 border-0 shadow-sm feature-card">
+                        <div class="card-body text-center p-4">
+                            <div class="feature-icon mb-3">
+                                <i class="bi bi-book display-4 text-info"></i>
+                            </div>
+                            <h5 class="card-title fw-bold">Learning Resources</h5>
+                            <p class="card-text text-muted">
+                                Tutorial, dokumentasi lengkap, dan contoh project untuk mempercepat pembelajaran.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-6 col-lg-4">
+                    <div class="card h-100 border-0 shadow-sm feature-card">
+                        <div class="card-body text-center p-4">
+                            <div class="feature-icon mb-3">
+                                <i class="bi bi-shield-check display-4 text-danger"></i>
+                            </div>
+                            <h5 class="card-title fw-bold">Security First</h5>
+                            <p class="card-text text-muted">
+                                Best practices untuk keamanan aplikasi dengan implementasi Spring Security.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-6 col-lg-4">
+                    <div class="card h-100 border-0 shadow-sm feature-card">
+                        <div class="card-body text-center p-4">
+                            <div class="feature-icon mb-3">
+                                <i class="bi bi-cloud display-4 text-primary"></i>
+                            </div>
+                            <h5 class="card-title fw-bold">Cloud Ready</h5>
+                            <p class="card-text text-muted">
+                                Deployment yang mudah ke cloud platform seperti AWS, Azure, dan Google Cloud.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-5">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6">
+                    <div class="about-content">
+                        <h2 class="display-5 fw-bold mb-4">Tentang JavaDev</h2>
+                        <p class="lead mb-4">
+                            JavaDev adalah platform pengembangan yang dirancang khusus untuk developer Java. 
+                            Kami menyediakan tools, framework, dan resources yang diperlukan untuk membangun 
+                            aplikasi Java yang modern dan scalable.
+                        </p>
+                        <p class="mb-4">
+                            Dengan fokus pada best practices dan teknologi terdepan, JavaDev membantu developer 
+                            dari berbagai level untuk menciptakan solusi yang powerful dan efisien.
+                        </p>
+                        
+                        <!-- Stats -->
+                        <div class="row text-center">
+                            <div class="col-4">
+                                <div class="stat-item">
+                                    <h3 class="display-6 fw-bold text-primary counter" data-target="1000">0</h3>
+                                    <p class="text-muted">Projects Created</p>
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <div class="stat-item">
+                                    <h3 class="display-6 fw-bold text-success counter" data-target="500">0</h3>
+                                    <p class="text-muted">Active Developers</p>
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <div class="stat-item">
+                                    <h3 class="display-6 fw-bold text-warning counter" data-target="98">0</h3>
+                                    <p class="text-muted">Satisfaction Rate</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-6">
+                    <div class="tech-stack-card">
+                        <div class="card border-0 shadow-lg">
+                            <div class="card-header bg-primary text-white">
+                                <h5 class="mb-0 fw-bold">
+                                    <i class="bi bi-stack me-2"></i>Tech Stack
+                                </h5>
+                            </div>
+                            <div class="card-body p-4">
+                                <div class="d-flex flex-wrap gap-2">
+                                    <span class="badge bg-primary rounded-pill px-3 py-2">Java 17+</span>
+                                    <span class="badge bg-success rounded-pill px-3 py-2">Spring Boot</span>
+                                    <span class="badge bg-warning rounded-pill px-3 py-2">Maven/Gradle</span>
+                                    <span class="badge bg-info rounded-pill px-3 py-2">PostgreSQL</span>
+                                    <span class="badge bg-secondary rounded-pill px-3 py-2">Docker</span>
+                                    <span class="badge bg-dark rounded-pill px-3 py-2">Kubernetes</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-5 bg-light">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 mx-auto text-center mb-5">
+                    <h2 class="display-5 fw-bold mb-3">Hubungi Kami</h2>
+                    <p class="lead text-muted">
+                        Siap memulai project Java Anda? Mari berkolaborasi!
+                    </p>
+                </div>
+            </div>
+            
+            <div class="row">
+                <div class="col-lg-4 mb-4">
+                    <div class="contact-info">
+                        <div class="card border-0 shadow-sm h-100">
+                            <div class="card-body text-center p-4">
+                                <i class="bi bi-envelope display-4 text-primary mb-3"></i>
+                                <h5 class="fw-bold">Email</h5>
+                                <p class="text-muted">hello@javvadev.com</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 mb-4">
+                    <div class="contact-info">
+                        <div class="card border-0 shadow-sm h-100">
+                            <div class="card-body text-center p-4">
+                                <i class="bi bi-github display-4 text-dark mb-3"></i>
+                                <h5 class="fw-bold">GitHub</h5>
+                                <p class="text-muted">github.com/wakeupjack/javvadev</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 mb-4">
+                    <div class="contact-info">
+                        <div class="card border-0 shadow-sm h-100">
+                            <div class="card-body text-center p-4">
+                                <i class="bi bi-globe display-4 text-success mb-3"></i>
+                                <h5 class="fw-bold">Website</h5>
+                                <p class="text-muted">www.javvadev.com</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Contact Form -->
+            <div class="row mt-5">
+                <div class="col-lg-8 mx-auto">
+                    <div class="card border-0 shadow-lg">
+                        <div class="card-body p-5">
+                            <form id="contactForm">
+                                <div class="row">
+                                    <div class="col-md-6 mb-3">
+                                        <label for="name" class="form-label">Nama Anda</label>
+                                        <input type="text" class="form-control" id="name" required>
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <label for="email" class="form-label">Email Anda</label>
+                                        <input type="email" class="form-control" id="email" required>
+                                    </div>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="message" class="form-label">Pesan Anda</label>
+                                    <textarea class="form-control" id="message" rows="5" required></textarea>
+                                </div>
+                                <div class="text-center">
+                                    <button type="submit" class="btn btn-primary btn-lg px-5">
+                                        <i class="bi bi-send me-2"></i>Kirim Pesan
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-light py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 mb-4">
+                    <h5 class="fw-bold mb-3">
+                        <i class="bi bi-rocket-takeoff text-primary"></i> JavaDev
+                    </h5>
+                    <p class="text-muted">
+                        Platform pengembangan Java modern untuk developer Indonesia.
+                    </p>
+                </div>
+                
+                <div class="col-lg-2 col-md-6 mb-4">
+                    <h6 class="fw-bold mb-3">Quick Links</h6>
+                    <ul class="list-unstyled">
+                        <li><a href="#home" class="text-muted text-decoration-none">Beranda</a></li>
+                        <li><a href="#features" class="text-muted text-decoration-none">Fitur</a></li>
+                        <li><a href="#about" class="text-muted text-decoration-none">Tentang</a></li>
+                        <li><a href="#contact" class="text-muted text-decoration-none">Kontak</a></li>
+                    </ul>
+                </div>
+                
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <h6 class="fw-bold mb-3">Follow Us</h6>
+                    <div class="d-flex gap-3">
+                        <a href="#" class="text-muted fs-4"><i class="bi bi-github"></i></a>
+                        <a href="#" class="text-muted fs-4"><i class="bi bi-linkedin"></i></a>
+                        <a href="#" class="text-muted fs-4"><i class="bi bi-twitter"></i></a>
+                    </div>
+                </div>
+                
+                <div class="col-lg-3 mb-4">
+                    <h6 class="fw-bold mb-3">Newsletter</h6>
+                    <p class="text-muted small">Subscribe untuk update terbaru</p>
+                    <div class="input-group">
+                        <input type="email" class="form-control" placeholder="Email Anda">
+                        <button class="btn btn-primary" type="button">
+                            <i class="bi bi-arrow-right"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <hr class="my-4">
+            
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <p class="text-muted mb-0">&copy; 2025 JavaDev. All rights reserved.</p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <p class="text-muted mb-0">Made with ❤️ by wakeupjack</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Custom JS -->
+    <script src="script.js"></script>
 </body>
 </html>
