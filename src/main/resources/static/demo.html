@@ -1,0 +1,1370 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Demo - JavaDev</title>
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.css">
+    
+    <style>
+        .demo-section {
+            margin-bottom: 2rem;
+            padding: 1.5rem;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            background-color: #f8f9fa;
+        }
+        
+        .demo-output {
+            background-color: #1e1e1e;
+            color: #fff;
+            padding: 1rem;
+            border-radius: 4px;
+            font-family: 'Courier New', monospace;
+            margin-top: 1rem;
+            max-height: 300px;
+            overflow-y: auto;
+            white-space: pre-wrap;
+        }
+        
+        .invalid {
+            border-color: #dc3545 !important;
+        }
+        
+        .error-message {
+            color: #dc3545;
+            font-size: 0.875rem;
+        }
+        
+        .user-card {
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 1rem;
+            margin: 0.5rem;
+            background-color: white;
+        }
+        
+        .projects-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        
+        .projects-table th,
+        .projects-table td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        
+        .table-header {
+            background-color: #f2f2f2;
+            font-weight: bold;
+        }
+        
+        .progress-bar {
+            width: 100px;
+            height: 20px;
+            background-color: #f0f0f0;
+            border-radius: 10px;
+            overflow: hidden;
+            display: inline-block;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            background-color: #4CAF50;
+            transition: width 0.3s ease;
+        }
+        
+        .status-active { color: #28a745; }
+        .status-pending { color: #ffc107; }
+        .status-completed { color: #6c757d; }
+        
+        .notification {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            padding: 1rem;
+            border-radius: 4px;
+            color: white;
+            z-index: 1000;
+            min-width: 300px;
+        }
+        
+        .notification-success { background-color: #28a745; }
+        .notification-error { background-color: #dc3545; }
+        .notification-warning { background-color: #ffc107; color: #212529; }
+        .notification-info { background-color: #17a2b8; }
+        
+        .close-btn {
+            background: none;
+            border: none;
+            color: inherit;
+            font-size: 1.2rem;
+            cursor: pointer;
+            float: right;
+        }
+        
+        .filterable-item {
+            padding: 0.5rem;
+            margin: 0.25rem 0;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        
+        .code-demo {
+            background-color: #f8f9fa;
+            border: 1px solid #dee2e6;
+            border-radius: 4px;
+            padding: 1rem;
+            margin: 1rem 0;
+        }
+        
+        .result-highlight {
+            background-color: #d4edda;
+            border: 1px solid #c3e6cb;
+            border-radius: 4px;
+            padding: 0.5rem;
+            margin: 0.5rem 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-4">
+        <h1 class="text-center mb-4">
+            <i class="bi bi-code-square"></i> JavaScript Demo - JavaDev
+        </h1>
+        
+        <!-- Navigation -->
+        <nav class="nav nav-pills mb-4 justify-content-center">
+            <a class="nav-link active" href="#variables">Variables</a>
+            <a class="nav-link" href="#conditionals">Conditionals</a>
+            <a class="nav-link" href="#loops">Loops</a>
+            <a class="nav-link" href="#functions">Functions</a>
+            <a class="nav-link" href="#dom">DOM</a>
+            <a class="nav-link" href="#async">Async</a>
+        </nav>
+        
+        <!-- Variables Demo -->
+        <div id="variables" class="demo-section">
+            <h2><i class="bi bi-gear"></i> Variables, Tipe Data & Operator</h2>
+            <p>Pelajari konsep dasar JavaScript: variabel, tipe data, dan operator.</p>
+            
+            <div class="row">
+                <div class="col-md-6">
+                    <h4>Variabel Declaration</h4>
+                    <div class="code-demo">
+                        <strong>let</strong> userName = "JavaDev User";<br>
+                        <strong>const</strong> PLATFORM_NAME = "JavaDev";<br>
+                        <strong>var</strong> oldVariable = "Deprecated";
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <h4>Tipe Data</h4>
+                    <div class="code-demo">
+                        String: "Hello World"<br>
+                        Number: 42, 3.14<br>
+                        Boolean: true, false<br>
+                        Array: [1, 2, 3]<br>
+                        Object: {name: "John"}
+                    </div>
+                </div>
+            </div>
+            
+            <button class="btn btn-primary" onclick="runVariablesDemo()">
+                <i class="bi bi-play-circle"></i> Run Variables Demo
+            </button>
+            <div id="variables-output" class="demo-output"></div>
+        </div>
+        
+        <!-- Conditionals Demo -->
+        <div id="conditionals" class="demo-section">
+            <h2><i class="bi bi-question-circle"></i> Conditionals (if/else, switch)</h2>
+            <p>Pelajari struktur kontrol kondisional untuk membuat keputusan dalam kode.</p>
+            
+            <div class="row">
+                <div class="col-md-6">
+                    <h4>If/Else Statement</h4>
+                    <div class="code-demo">
+                        if (score >= 90) {<br>
+                        &nbsp;&nbsp;grade = "A";<br>
+                        } else if (score >= 80) {<br>
+                        &nbsp;&nbsp;grade = "B";<br>
+                        } else {<br>
+                        &nbsp;&nbsp;grade = "C";<br>
+                        }
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <h4>Switch Statement</h4>
+                    <div class="code-demo">
+                        switch (day) {<br>
+                        &nbsp;&nbsp;case "Monday":<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;return "Start of week";<br>
+                        &nbsp;&nbsp;case "Friday":<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;return "TGIF!";<br>
+                        &nbsp;&nbsp;default:<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;return "Regular day";<br>
+                        }
+                    </div>
+                </div>
+            </div>
+            
+            <button class="btn btn-primary" onclick="runConditionalsDemo()">
+                <i class="bi bi-play-circle"></i> Run Conditionals Demo
+            </button>
+            <div id="conditionals-output" class="demo-output"></div>
+        </div>
+        
+        <!-- Loops Demo -->
+        <div id="loops" class="demo-section">
+            <h2><i class="bi bi-arrow-repeat"></i> Loops (for, while, forEach)</h2>
+            <p>Pelajari berbagai jenis perulangan untuk memproses data secara efisien.</p>
+            
+            <div class="row">
+                <div class="col-md-4">
+                    <h4>For Loop</h4>
+                    <div class="code-demo">
+                        for (let i = 0; i < 5; i++) {<br>
+                        &nbsp;&nbsp;console.log(i);<br>
+                        }
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <h4>While Loop</h4>
+                    <div class="code-demo">
+                        let i = 0;<br>
+                        while (i < 5) {<br>
+                        &nbsp;&nbsp;console.log(i);<br>
+                        &nbsp;&nbsp;i++;<br>
+                        }
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <h4>forEach</h4>
+                    <div class="code-demo">
+                        array.forEach(item => {<br>
+                        &nbsp;&nbsp;console.log(item);<br>
+                        });
+                    </div>
+                </div>
+            </div>
+            
+            <button class="btn btn-primary" onclick="runLoopsDemo()">
+                <i class="bi bi-play-circle"></i> Run Loops Demo
+            </button>
+            <div id="loops-output" class="demo-output"></div>
+        </div>
+        
+        <!-- Functions Demo -->
+        <div id="functions" class="demo-section">
+            <h2><i class="bi bi-braces"></i> Functions (Declaration & Arrow)</h2>
+            <p>Pelajari cara membuat dan menggunakan fungsi dalam JavaScript.</p>
+            
+            <div class="row">
+                <div class="col-md-6">
+                    <h4>Function Declaration</h4>
+                    <div class="code-demo">
+                        function greet(name) {<br>
+                        &nbsp;&nbsp;return "Hello " + name;<br>
+                        }
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <h4>Arrow Function</h4>
+                    <div class="code-demo">
+                        const greet = (name) => {<br>
+                        &nbsp;&nbsp;return `Hello ${name}`;<br>
+                        }
+                    </div>
+                </div>
+            </div>
+            
+            <button class="btn btn-primary" onclick="runFunctionsDemo()">
+                <i class="bi bi-play-circle"></i> Run Functions Demo
+            </button>
+            <div id="functions-output" class="demo-output"></div>
+        </div>
+        
+        <!-- DOM Manipulation Demo -->
+        <div id="dom" class="demo-section">
+            <h2><i class="bi bi-file-code"></i> DOM Manipulation</h2>
+            <p>Pelajari cara berinteraksi dengan elemen HTML menggunakan JavaScript.</p>
+            
+            <!-- Element Selection Demo -->
+            <div class="row mb-3">
+                <div class="col-md-6">
+                    <h4>Element Selection</h4>
+                    <div id="main-header" class="alert alert-info">Main Header</div>
+                    <button class="btn btn-secondary" onclick="demonstrateSelection()">
+                        Test Selection
+                    </button>
+                </div>
+                <div class="col-md-6">
+                    <h4>Content Manipulation</h4>
+                    <div id="demo-content" class="alert alert-warning">Original content</div>
+                    <div id="demo-text" class="alert alert-success">Original text</div>
+                    <button class="btn btn-secondary" onclick="demonstrateContent()">
+                        Change Content
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Style Manipulation -->
+            <div class="row mb-3">
+                <div class="col-md-6">
+                    <h4>Style Manipulation</h4>
+                    <div id="demo-box" class="p-3 border">Click me to change styles!</div>
+                </div>
+                <div class="col-md-6">
+                    <h4>Class Manipulation</h4>
+                    <div id="demo-card" class="card p-3">
+                        <p>This card will change classes</p>
+                        <button class="btn btn-sm btn-outline-primary" onclick="toggleCardClass()">
+                            Toggle Classes
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Form Demo -->
+            <div class="row mb-3">
+                <div class="col-md-12">
+                    <h4>Form Handling</h4>
+                    <form id="demo-form" class="row g-3">
+                        <div class="col-md-6">
+                            <label for="name" class="form-label">Name</label>
+                            <input type="text" class="form-control" id="name" name="name" required>
+                            <div id="name-error" class="error-message"></div>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="email" class="form-label">Email</label>
+                            <input type="email" class="form-control" id="email" name="email" required>
+                            <div id="email-error" class="error-message"></div>
+                        </div>
+                        <div class="col-12">
+                            <button type="submit" class="btn btn-primary">Submit Form</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            
+            <!-- Dynamic Content -->
+            <div class="row mb-3">
+                <div class="col-md-12">
+                    <h4>Dynamic Content</h4>
+                    <div id="dynamic-container" class="border p-3 mb-3">
+                        <p>Dynamic content will appear here</p>
+                    </div>
+                    <button class="btn btn-success" onclick="createDynamicElements()">
+                        Create Elements
+                    </button>
+                    <button class="btn btn-danger" onclick="clearDynamicContent()">
+                        Clear Content
+                    </button>
+                </div>
+            </div>
+            
+            <!-- User Management -->
+            <div class="row mb-3">
+                <div class="col-md-12">
+                    <h4>User Management</h4>
+                    <div id="user-container" class="d-flex flex-wrap"></div>
+                    <button class="btn btn-primary" onclick="generateUserCards()">
+                        Generate User Cards
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Project Table -->
+            <div class="row mb-3">
+                <div class="col-md-12">
+                    <h4>Project Table</h4>
+                    <div id="table-container"></div>
+                    <button class="btn btn-primary" onclick="generateProjectTable()">
+                        Generate Table
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Notifications -->
+            <div class="row mb-3">
+                <div class="col-md-12">
+                    <h4>Notification System</h4>
+                    <div id="notification-buttons"></div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Async Demo -->
+        <div id="async" class="demo-section">
+            <h2><i class="bi bi-clock"></i> Asynchronous JavaScript</h2>
+            <p>Pelajari cara menangani operasi asinkron dalam JavaScript.</p>
+            
+            <div class="row mb-3">
+                <div class="col-md-4">
+                    <h4>Callbacks</h4>
+                    <div class="code-demo">
+                        function fetchData(callback) {<br>
+                        &nbsp;&nbsp;setTimeout(() => {<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;callback("Data loaded");<br>
+                        &nbsp;&nbsp;}, 1000);<br>
+                        }
+                    </div>
+                    <button class="btn btn-primary" onclick="demoCallbacks()">
+                        Test Callbacks
+                    </button>
+                    <div id="callback-output" class="demo-output"></div>
+                </div>
+                <div class="col-md-4">
+                    <h4>Promises</h4>
+                    <div class="code-demo">
+                        fetchData()<br>
+                        &nbsp;&nbsp;.then(data => {<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;console.log(data);<br>
+                        &nbsp;&nbsp;})<br>
+                        &nbsp;&nbsp;.catch(error => {<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;console.error(error);<br>
+                        &nbsp;&nbsp;});
+                    </div>
+                    <button class="btn btn-primary" onclick="demoPromises()">
+                        Test Promises
+                    </button>
+                    <div id="promise-output" class="demo-output"></div>
+                </div>
+                <div class="col-md-4">
+                    <h4>Async/Await</h4>
+                    <div class="code-demo">
+                        async function loadData() {<br>
+                        &nbsp;&nbsp;try {<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;const data = await fetchData();<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;console.log(data);<br>
+                        &nbsp;&nbsp;} catch (error) {<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;console.error(error);<br>
+                        &nbsp;&nbsp;}<br>
+                        }
+                    </div>
+                    <button class="btn btn-primary" onclick="demoAsyncAwait()">
+                        Test Async/Await
+                    </button>
+                    <div id="async-output" class="demo-output"></div>
+                </div>
+            </div>
+            
+            <!-- API Demo -->
+            <div class="row mb-3">
+                <div class="col-md-12">
+                    <h4>API Calls Simulation</h4>
+                    <div class="btn-group mb-3" role="group">
+                        <button class="btn btn-outline-primary" onclick="demoGET()">GET Request</button>
+                        <button class="btn btn-outline-success" onclick="demoPOST()">POST Request</button>
+                        <button class="btn btn-outline-warning" onclick="demoPUT()">PUT Request</button>
+                        <button class="btn btn-outline-danger" onclick="demoDELETE()">DELETE Request</button>
+                    </div>
+                    <div id="api-output" class="demo-output"></div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Console Output -->
+        <div class="demo-section">
+            <h2><i class="bi bi-terminal"></i> Console Output</h2>
+            <div id="console-output" class="demo-output" style="height: 400px;">
+                Console output will appear here...
+            </div>
+            <button class="btn btn-secondary" onclick="clearConsole()">Clear Console</button>
+        </div>
+    </div>
+    
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <script>
+        // =============================================
+        // CONSOLE OUTPUT OVERRIDE
+        // =============================================
+        const originalConsoleLog = console.log;
+        const consoleOutput = document.getElementById('console-output');
+        
+        console.log = function(...args) {
+            originalConsoleLog.apply(console, args);
+            
+            if (consoleOutput) {
+                const message = args.map(arg => 
+                    typeof arg === 'object' ? JSON.stringify(arg, null, 2) : String(arg)
+                ).join(' ');
+                
+                consoleOutput.innerHTML += message + '\n';
+                consoleOutput.scrollTop = consoleOutput.scrollHeight;
+            }
+        };
+        
+        // =============================================
+        // VARIABLES DEMO
+        // =============================================
+        function runVariablesDemo() {
+            const output = document.getElementById('variables-output');
+            output.innerHTML = '';
+            
+            console.log("=== VARIABLES DEMO ===");
+            
+            // 1. Variabel Declaration
+            console.log("1. VARIABEL DECLARATION");
+            let userName = "JavaDev User";
+            const PLATFORM_NAME = "JavaDev";
+            var oldVariable = "Ini var (deprecated)";
+            
+            console.log("Platform:", PLATFORM_NAME);
+            console.log("User:", userName);
+            
+            // 2. Tipe Data
+            console.log("\n2. TIPE DATA");
+            let welcomeMessage = "Selamat datang di JavaDev!";
+            let projectCount = 150;
+            let completionRate = 98.5;
+            let isActive = true;
+            let techStack = ["Java", "Spring Boot", "PostgreSQL", "Docker"];
+            let developer = {
+                name: "John Doe",
+                age: 28,
+                skills: ["Java", "JavaScript", "Spring Boot"],
+                isActive: true
+            };
+            
+            console.log("String:", welcomeMessage);
+            console.log("Number:", projectCount);
+            console.log("Boolean:", isActive);
+            console.log("Array:", techStack);
+            console.log("Object:", developer);
+            
+            // 3. Operator
+            console.log("\n3. OPERATOR");
+            let a = 10;
+            let b = 3;
+            
+            console.log("Aritmatika:");
+            console.log("a + b =", a + b);
+            console.log("a - b =", a - b);
+            console.log("a * b =", a * b);
+            console.log("a / b =", a / b);
+            console.log("a % b =", a % b);
+            
+            console.log("\nPerbandingan:");
+            console.log("5 == '5':", 5 == '5');
+            console.log("5 === '5':", 5 === '5');
+            console.log("10 > 5:", 10 > 5);
+            
+            console.log("\nLogical:");
+            let isLoggedIn = true;
+            let hasPermission = false;
+            console.log("isLoggedIn && hasPermission:", isLoggedIn && hasPermission);
+            console.log("isLoggedIn || hasPermission:", isLoggedIn || hasPermission);
+            
+            // 4. Praktik - Validasi Form
+            console.log("\n4. CONTOH PRAKTIS - VALIDASI");
+            function validateUser(name, email, age) {
+                let isNameValid = name && name.length >= 2;
+                let isEmailValid = email && email.includes('@');
+                let isAgeValid = age && age >= 18 && age <= 100;
+                
+                return {
+                    isValid: isNameValid && isEmailValid && isAgeValid,
+                    errors: {
+                        name: !isNameValid ? "Nama harus minimal 2 karakter" : null,
+                        email: !isEmailValid ? "Email tidak valid" : null,
+                        age: !isAgeValid ? "Umur harus antara 18-100" : null
+                    }
+                };
+            }
+            
+            let validationResult = validateUser("John Doe", "john@example.com", 25);
+            console.log("Validation result:", validationResult);
+            
+            output.innerHTML = 'Variables demo completed! Check console for details.';
+        }
+        
+        // =============================================
+        // CONDITIONALS DEMO
+        // =============================================
+        function runConditionalsDemo() {
+            const output = document.getElementById('conditionals-output');
+            output.innerHTML = '';
+            
+            console.log("=== CONDITIONALS DEMO ===");
+            
+            // 1. If/Else Statement
+            console.log("1. IF/ELSE STATEMENT");
+            let userScore = 85;
+            
+            if (userScore >= 90) {
+                console.log("Grade: A (Excellent!)");
+            } else if (userScore >= 80) {
+                console.log("Grade: B (Good!)");
+            } else if (userScore >= 70) {
+                console.log("Grade: C (Fair)");
+            } else if (userScore >= 60) {
+                console.log("Grade: D (Needs improvement)");
+            } else {
+                console.log("Grade: F (Failed)");
+            }
+            
+            // 2. Switch Statement
+            console.log("\n2. SWITCH STATEMENT");
+            let dayOfWeek = 3;
+            
+            switch (dayOfWeek) {
+                case 1:
+                    console.log("Monday - Start of the week!");
+                    break;
+                case 2:
+                    console.log("Tuesday - Keep going!");
+                    break;
+                case 3:
+                    console.log("Wednesday - Hump day!");
+                    break;
+                case 4:
+                    console.log("Thursday - Almost there!");
+                    break;
+                case 5:
+                    console.log("Friday - TGIF!");
+                    break;
+                case 6:
+                case 7:
+                    console.log("Weekend - Time to relax!");
+                    break;
+                default:
+                    console.log("Invalid day");
+            }
+            
+            // 3. Ternary Operator
+            console.log("\n3. TERNARY OPERATOR");
+            let age = 20;
+            let canVote = age >= 18 ? "Yes, can vote" : "No, too young";
+            console.log("Can vote:", canVote);
+            
+            // 4. Praktik - Authentication
+            console.log("\n4. CONTOH PRAKTIS - AUTHENTICATION");
+            function checkUserAccess(user) {
+                if (!user) {
+                    return "User not found";
+                }
+                
+                if (!user.isActive) {
+                    return "Account is inactive";
+                }
+                
+                if (!user.emailVerified) {
+                    return "Please verify your email";
+                }
+                
+                switch (user.role) {
+                    case "admin":
+                        return "Full access granted";
+                    case "moderator":
+                        return "Moderator access granted";
+                    case "user":
+                        return "User access granted";
+                    default:
+                        return "Unknown role";
+                }
+            }
+            
+            let testUser = {
+                id: 1,
+                name: "John Doe",
+                email: "john@example.com",
+                isActive: true,
+                emailVerified: true,
+                role: "user"
+            };
+            
+            console.log("Access check:", checkUserAccess(testUser));
+            
+            output.innerHTML = 'Conditionals demo completed! Check console for details.';
+        }
+        
+        // =============================================
+        // LOOPS DEMO
+        // =============================================
+        function runLoopsDemo() {
+            const output = document.getElementById('loops-output');
+            output.innerHTML = '';
+            
+            console.log("=== LOOPS DEMO ===");
+            
+            // 1. For Loop
+            console.log("1. FOR LOOP");
+            console.log("Counting from 1 to 5:");
+            for (let i = 1; i <= 5; i++) {
+                console.log(`Count: ${i}`);
+            }
+            
+            // 2. For loop dengan array
+            console.log("\n2. FOR LOOP DENGAN ARRAY");
+            let techStack = ["Java", "Spring Boot", "PostgreSQL", "Docker", "Kubernetes"];
+            console.log("Tech Stack:");
+            for (let i = 0; i < techStack.length; i++) {
+                console.log(`${i + 1}. ${techStack[i]}`);
+            }
+            
+            // 3. For...of Loop
+            console.log("\n3. FOR...OF LOOP");
+            let programmingLanguages = ["JavaScript", "Java", "Python", "Go", "Rust"];
+            console.log("Programming languages:");
+            for (let language of programmingLanguages) {
+                console.log(`- ${language}`);
+            }
+            
+            // 4. While Loop
+            console.log("\n4. WHILE LOOP");
+            let counter = 1;
+            console.log("While loop counting:");
+            while (counter <= 5) {
+                console.log(`Counter: ${counter}`);
+                counter++;
+            }
+            
+            // 5. Array Methods
+            console.log("\n5. ARRAY METHODS");
+            let numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+            
+            // forEach
+            console.log("Using forEach:");
+            numbers.forEach((num, index) => {
+                if (index < 3) console.log(`Index ${index}: ${num}`);
+            });
+            
+            // map
+            console.log("Using map (square each number):");
+            let squares = numbers.map(num => num * num);
+            console.log(squares.slice(0, 5));
+            
+            // filter
+            console.log("Using filter (even numbers only):");
+            let evenNumbers = numbers.filter(num => num % 2 === 0);
+            console.log(evenNumbers);
+            
+            // reduce
+            console.log("Using reduce (sum all numbers):");
+            let sum = numbers.reduce((total, num) => total + num, 0);
+            console.log(`Sum: ${sum}`);
+            
+            // 6. Praktik - Processing Data
+            console.log("\n6. CONTOH PRAKTIS - PROCESSING DATA");
+            let users = [
+                { id: 1, name: "John", age: 25, active: true, projects: 5 },
+                { id: 2, name: "Jane", age: 30, active: false, projects: 8 },
+                { id: 3, name: "Bob", age: 35, active: true, projects: 12 }
+            ];
+            
+            // Filter active users
+            let activeUsers = users.filter(user => user.active);
+            console.log("Active users:");
+            activeUsers.forEach(user => {
+                console.log(`- ${user.name} (${user.projects} projects)`);
+            });
+            
+            // Calculate total projects
+            let totalProjects = users.reduce((total, user) => total + user.projects, 0);
+            console.log(`Total projects: ${totalProjects}`);
+            
+            output.innerHTML = 'Loops demo completed! Check console for details.';
+        }
+        
+        // =============================================
+        // FUNCTIONS DEMO
+        // =============================================
+        function runFunctionsDemo() {
+            const output = document.getElementById('functions-output');
+            output.innerHTML = '';
+            
+            console.log("=== FUNCTIONS DEMO ===");
+            
+            // 1. Function Declaration
+            console.log("1. FUNCTION DECLARATION");
+            function greetUser(name) {
+                return `Hello, ${name}! Welcome to JavaDev!`;
+            }
+            
+            function calculateProjectScore(completedTasks, totalTasks, quality) {
+                const completionRate = (completedTasks / totalTasks) * 100;
+                const qualityScore = quality * 20;
+                return Math.round((completionRate + qualityScore) / 2);
+            }
+            
+            console.log(greetUser("John Doe"));
+            console.log("Project Score:", calculateProjectScore(8, 10, 4));
+            
+            // 2. Arrow Functions
+            console.log("\n2. ARROW FUNCTIONS");
+            const welcome = (name) => `Welcome ${name}!`;
+            const square = x => x * x;
+            const add = (a, b) => a + b;
+            
+            const validateEmail = (email) => {
+                if (!email || typeof email !== 'string') {
+                    return false;
+                }
+                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                return emailRegex.test(email);
+            };
+            
+            console.log(welcome("Developer"));
+            console.log("5 squared:", square(5));
+            console.log("3 + 7 =", add(3, 7));
+            console.log("Email valid:", validateEmail("test@example.com"));
+            
+            // 3. Higher-Order Functions
+            console.log("\n3. HIGHER-ORDER FUNCTIONS");
+            function processData(data, processor) {
+                return data.map(processor);
+            }
+            
+            function createMultiplier(factor) {
+                return function(number) {
+                    return number * factor;
+                };
+            }
+            
+            let numbers = [1, 2, 3, 4, 5];
+            let doubled = processData(numbers, x => x * 2);
+            console.log("Doubled numbers:", doubled);
+            
+            let triple = createMultiplier(3);
+            console.log("Triple of 7:", triple(7));
+            
+            // 4. Closures
+            console.log("\n4. CLOSURES");
+            function createCounter() {
+                let count = 0;
+                
+                return {
+                    increment: () => ++count,
+                    decrement: () => --count,
+                    getCount: () => count,
+                    reset: () => count = 0
+                };
+            }
+            
+            let counter = createCounter();
+            console.log("Initial count:", counter.getCount());
+            console.log("After increment:", counter.increment());
+            console.log("After increment:", counter.increment());
+            console.log("After decrement:", counter.decrement());
+            
+            // 5. Praktik - Task Manager
+            console.log("\n5. CONTOH PRAKTIS - TASK MANAGER");
+            const taskManager = (() => {
+                let tasks = [];
+                let nextId = 1;
+                
+                return {
+                    addTask: (title, description = "") => {
+                        const task = {
+                            id: nextId++,
+                            title,
+                            description,
+                            completed: false,
+                            createdAt: new Date()
+                        };
+                        tasks.push(task);
+                        return task;
+                    },
+                    
+                    getTasks: () => [...tasks],
+                    
+                    updateTask: (id, updates) => {
+                        const task = tasks.find(task => task.id === id);
+                        if (task) {
+                            Object.assign(task, updates);
+                            return task;
+                        }
+                        return null;
+                    },
+                    
+                    filterTasks: (filterFn) => tasks.filter(filterFn)
+                };
+            })();
+            
+            taskManager.addTask("Learn JavaScript", "Complete JS fundamentals");
+            taskManager.addTask("Build JavaDev", "Create awesome platform");
+            taskManager.updateTask(1, { completed: true });
+            
+            console.log("All tasks:", taskManager.getTasks());
+            console.log("Completed tasks:", taskManager.filterTasks(task => task.completed));
+            
+            output.innerHTML = 'Functions demo completed! Check console for details.';
+        }
+        
+        // =============================================
+        // DOM MANIPULATION FUNCTIONS
+        // =============================================
+        function demonstrateSelection() {
+            const header = document.getElementById('main-header');
+            header.style.backgroundColor = '#28a745';
+            header.style.color = 'white';
+            header.textContent = 'Header Selected and Modified!';
+            console.log('Element selected and modified using getElementById');
+        }
+        
+        function demonstrateContent() {
+            const demoContent = document.getElementById('demo-content');
+            const demoText = document.getElementById('demo-text');
+            
+            demoContent.innerHTML = '<strong>Content changed with innerHTML!</strong>';
+            demoText.textContent = 'Text changed with textContent!';
+            console.log('Content manipulation demonstrated');
+        }
+        
+        function toggleCardClass() {
+            const card = document.getElementById('demo-card');
+            card.classList.toggle('bg-primary');
+            card.classList.toggle('text-white');
+            console.log('Classes toggled using classList');
+        }
+        
+        function createDynamicElements() {
+            const container = document.getElementById('dynamic-container');
+            
+            const newElement = document.createElement('div');
+            newElement.className = 'alert alert-success';
+            newElement.textContent = `Dynamic element created at ${new Date().toLocaleTimeString()}`;
+            
+            container.appendChild(newElement);
+            console.log('Dynamic element created using createElement and appendChild');
+        }
+        
+        function clearDynamicContent() {
+            const container = document.getElementById('dynamic-container');
+            container.innerHTML = '<p>Dynamic content cleared</p>';
+            console.log('Dynamic content cleared');
+        }
+        
+        function generateUserCards() {
+            const users = [
+                { name: 'John Doe', email: 'john@javvadev.com', role: 'Developer' },
+                { name: 'Jane Smith', email: 'jane@javvadev.com', role: 'Designer' },
+                { name: 'Bob Johnson', email: 'bob@javvadev.com', role: 'Manager' }
+            ];
+            
+            const container = document.getElementById('user-container');
+            container.innerHTML = '';
+            
+            users.forEach(user => {
+                const card = document.createElement('div');
+                card.className = 'user-card';
+                card.innerHTML = `
+                    <h5>${user.name}</h5>
+                    <p><strong>Email:</strong> ${user.email}</p>
+                    <p><strong>Role:</strong> ${user.role}</p>
+                    <button class="btn btn-sm btn-outline-primary" onclick="editUser('${user.name}')">Edit</button>
+                    <button class="btn btn-sm btn-outline-danger" onclick="deleteUser('${user.name}')">Delete</button>
+                `;
+                container.appendChild(card);
+            });
+            
+            console.log('User cards generated dynamically');
+        }
+        
+        function generateProjectTable() {
+            const projects = [
+                { id: 1, name: 'JavaDev Platform', status: 'Active', progress: 85 },
+                { id: 2, name: 'Mobile App', status: 'Pending', progress: 30 },
+                { id: 3, name: 'API Gateway', status: 'Completed', progress: 100 }
+            ];
+            
+            const container = document.getElementById('table-container');
+            
+            let tableHTML = `
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Name</th>
+                            <th>Status</th>
+                            <th>Progress</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+            `;
+            
+            projects.forEach(project => {
+                tableHTML += `
+                    <tr>
+                        <td>${project.id}</td>
+                        <td>${project.name}</td>
+                        <td><span class="badge bg-${project.status === 'Active' ? 'success' : project.status === 'Pending' ? 'warning' : 'secondary'}">${project.status}</span></td>
+                        <td>
+                            <div class="progress" style="width: 100px;">
+                                <div class="progress-bar" role="progressbar" style="width: ${project.progress}%"></div>
+                            </div>
+                            ${project.progress}%
+                        </td>
+                        <td>
+                            <button class="btn btn-sm btn-outline-primary" onclick="editProject(${project.id})">Edit</button>
+                            <button class="btn btn-sm btn-outline-danger" onclick="deleteProject(${project.id})">Delete</button>
+                        </td>
+                    </tr>
+                `;
+            });
+            
+            tableHTML += '</tbody></table>';
+            container.innerHTML = tableHTML;
+            console.log('Project table generated with dynamic data');
+        }
+        
+        function editUser(name) {
+            console.log(`Editing user: ${name}`);
+            showNotification(`Editing user: ${name}`, 'info');
+        }
+        
+        function deleteUser(name) {
+            console.log(`Deleting user: ${name}`);
+            showNotification(`User ${name} deleted`, 'success');
+        }
+        
+        function editProject(id) {
+            console.log(`Editing project: ${id}`);
+            showNotification(`Editing project ID: ${id}`, 'info');
+        }
+        
+        function deleteProject(id) {
+            console.log(`Deleting project: ${id}`);
+            showNotification(`Project ID ${id} deleted`, 'success');
+        }
+        
+        // =============================================
+        // NOTIFICATION SYSTEM
+        // =============================================
+        function showNotification(message, type = 'info', duration = 3000) {
+            const notification = document.createElement('div');
+            notification.className = `notification notification-${type}`;
+            notification.innerHTML = `
+                <span>${message}</span>
+                <button class="close-btn" onclick="this.parentElement.remove()">×</button>
+            `;
+            
+            document.body.appendChild(notification);
+            
+            setTimeout(() => {
+                if (notification.parentElement) {
+                    notification.remove();
+                }
+            }, duration);
+        }
+        
+        // =============================================
+        // ASYNC DEMOS
+        // =============================================
+        function demoCallbacks() {
+            const output = document.getElementById('callback-output');
+            output.innerHTML = 'Testing callbacks...\n';
+            
+            console.log("=== CALLBACK DEMO ===");
+            
+            function fetchUserData(userId, callback) {
+                setTimeout(() => {
+                    if (userId <= 0) {
+                        callback("Error: Invalid user ID", null);
+                        return;
+                    }
+                    
+                    const userData = {
+                        id: userId,
+                        name: `User ${userId}`,
+                        email: `user${userId}@javvadev.com`,
+                        projects: Math.floor(Math.random() * 10) + 1
+                    };
+                    
+                    callback(null, userData);
+                }, 1000);
+            }
+            
+            fetchUserData(1, (error, data) => {
+                if (error) {
+                    console.error("Callback error:", error);
+                    output.innerHTML += `Error: ${error}\n`;
+                    return;
+                }
+                
+                console.log("Callback success:", data);
+                output.innerHTML += `Received: ${JSON.stringify(data, null, 2)}\n`;
+            });
+        }
+        
+        function demoPromises() {
+            const output = document.getElementById('promise-output');
+            output.innerHTML = 'Testing promises...\n';
+            
+            console.log("=== PROMISE DEMO ===");
+            
+            function fetchUserDataPromise(userId) {
+                return new Promise((resolve, reject) => {
+                    setTimeout(() => {
+                        if (userId <= 0) {
+                            reject(new Error("Invalid user ID"));
+                            return;
+                        }
+                        
+                        const userData = {
+                            id: userId,
+                            name: `User ${userId}`,
+                            email: `user${userId}@javvadev.com`,
+                            projects: Math.floor(Math.random() * 10) + 1
+                        };
+                        
+                        resolve(userData);
+                    }, 1000);
+                });
+            }
+            
+            fetchUserDataPromise(1)
+                .then(data => {
+                    console.log("Promise success:", data);
+                    output.innerHTML += `Received: ${JSON.stringify(data, null, 2)}\n`;
+                })
+                .catch(error => {
+                    console.error("Promise error:", error);
+                    output.innerHTML += `Error: ${error.message}\n`;
+                });
+        }
+        
+        async function demoAsyncAwait() {
+            const output = document.getElementById('async-output');
+            output.innerHTML = 'Testing async/await...\n';
+            
+            console.log("=== ASYNC/AWAIT DEMO ===");
+            
+            function fetchUserDataAsync(userId) {
+                return new Promise((resolve, reject) => {
+                    setTimeout(() => {
+                        if (userId <= 0) {
+                            reject(new Error("Invalid user ID"));
+                            return;
+                        }
+                        
+                        const userData = {
+                            id: userId,
+                            name: `User ${userId}`,
+                            email: `user${userId}@javvadev.com`,
+                            projects: Math.floor(Math.random() * 10) + 1
+                        };
+                        
+                        resolve(userData);
+                    }, 1000);
+                });
+            }
+            
+            try {
+                const data = await fetchUserDataAsync(1);
+                console.log("Async/await success:", data);
+                output.innerHTML += `Received: ${JSON.stringify(data, null, 2)}\n`;
+            } catch (error) {
+                console.error("Async/await error:", error);
+                output.innerHTML += `Error: ${error.message}\n`;
+            }
+        }
+        
+        // =============================================
+        // API SIMULATION
+        // =============================================
+        function demoGET() {
+            const output = document.getElementById('api-output');
+            output.innerHTML = 'Simulating GET request...\n';
+            
+            console.log("=== GET REQUEST DEMO ===");
+            
+            // Simulate API call
+            setTimeout(() => {
+                const data = { 
+                    id: 1, 
+                    name: 'John Doe', 
+                    email: 'john@javvadev.com',
+                    role: 'Developer',
+                    projects: [
+                        { id: 1, name: 'JavaDev Platform' },
+                        { id: 2, name: 'Mobile App' }
+                    ]
+                };
+                
+                console.log("GET Response:", data);
+                output.innerHTML += `GET Response:\n${JSON.stringify(data, null, 2)}\n`;
+            }, 1000);
+        }
+        
+        function demoPOST() {
+            const output = document.getElementById('api-output');
+            output.innerHTML = 'Simulating POST request...\n';
+            
+            console.log("=== POST REQUEST DEMO ===");
+            
+            const newUser = {
+                name: 'Jane Smith',
+                email: 'jane@javvadev.com',
+                role: 'Designer'
+            };
+            
+            console.log("POST Data:", newUser);
+            
+            setTimeout(() => {
+                const response = { 
+                    success: true, 
+                    message: 'User created successfully', 
+                    id: 123,
+                    data: newUser
+                };
+                
+                console.log("POST Response:", response);
+                output.innerHTML += `POST Data: ${JSON.stringify(newUser, null, 2)}\n`;
+                output.innerHTML += `POST Response: ${JSON.stringify(response, null, 2)}\n`;
+            }, 1000);
+        }
+        
+        function demoPUT() {
+            const output = document.getElementById('api-output');
+            output.innerHTML = 'Simulating PUT request...\n';
+            
+            console.log("=== PUT REQUEST DEMO ===");
+            
+            const updateData = {
+                id: 1,
+                name: 'John Doe Updated',
+                email: 'john.updated@javvadev.com',
+                role: 'Senior Developer'
+            };
+            
+            console.log("PUT Data:", updateData);
+            
+            setTimeout(() => {
+                const response = { 
+                    success: true, 
+                    message: 'User updated successfully',
+                    data: updateData
+                };
+                
+                console.log("PUT Response:", response);
+                output.innerHTML += `PUT Data: ${JSON.stringify(updateData, null, 2)}\n`;
+                output.innerHTML += `PUT Response: ${JSON.stringify(response, null, 2)}\n`;
+            }, 1000);
+        }
+        
+        function demoDELETE() {
+            const output = document.getElementById('api-output');
+            output.innerHTML = 'Simulating DELETE request...\n';
+            
+            console.log("=== DELETE REQUEST DEMO ===");
+            
+            const userId = 1;
+            console.log("DELETE User ID:", userId);
+            
+            setTimeout(() => {
+                const response = { 
+                    success: true, 
+                    message: `User with ID ${userId} deleted successfully`
+                };
+                
+                console.log("DELETE Response:", response);
+                output.innerHTML += `DELETE User ID: ${userId}\n`;
+                output.innerHTML += `DELETE Response: ${JSON.stringify(response, null, 2)}\n`;
+            }, 1000);
+        }
+        
+        // =============================================
+        // UTILITY FUNCTIONS
+        // =============================================
+        function clearConsole() {
+            const consoleOutput = document.getElementById('console-output');
+            consoleOutput.innerHTML = 'Console cleared...\n';
+        }
+        
+        // =============================================
+        // FORM HANDLING
+        // =============================================
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize notification buttons
+            const notificationButtons = document.getElementById('notification-buttons');
+            if (notificationButtons) {
+                notificationButtons.innerHTML = `
+                    <button class="btn btn-success me-2" onclick="showNotification('Success message!', 'success')">Success</button>
+                    <button class="btn btn-danger me-2" onclick="showNotification('Error message!', 'error')">Error</button>
+                    <button class="btn btn-warning me-2" onclick="showNotification('Warning message!', 'warning')">Warning</button>
+                    <button class="btn btn-info me-2" onclick="showNotification('Info message!', 'info')">Info</button>
+                `;
+            }
+            
+            // Form submission handling
+            const demoForm = document.getElementById('demo-form');
+            if (demoForm) {
+                demoForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    
+                    console.log("=== FORM SUBMISSION DEMO ===");
+                    
+                    // Get form data
+                    const formData = new FormData(this);
+                    const data = Object.fromEntries(formData);
+                    
+                    console.log("Form data:", data);
+                    
+                    // Validate form
+                    const errors = [];
+                    if (!data.name || data.name.trim().length < 2) {
+                        errors.push("Name must be at least 2 characters");
+                    }
+                    if (!data.email || !data.email.includes('@')) {
+                        errors.push("Please enter a valid email");
+                    }
+                    
+                    if (errors.length > 0) {
+                        console.error("Validation errors:", errors);
+                        showNotification('Please fix form errors: ' + errors.join(', '), 'error');
+                        return;
+                    }
+                    
+                    // Simulate successful submission
+                    console.log("Form submitted successfully");
+                    showNotification('Form submitted successfully!', 'success');
+                    this.reset();
+                });
+            }
+            
+            // Add click event to demo-box
+            const demoBox = document.getElementById('demo-box');
+            if (demoBox) {
+                demoBox.addEventListener('click', function() {
+                    this.style.backgroundColor = '#007bff';
+                    this.style.color = 'white';
+                    this.style.transform = 'scale(1.05)';
+                    this.style.cursor = 'pointer';
+                    this.textContent = 'Styles changed with JavaScript!';
+                    
+                    console.log('Demo box clicked and styles changed');
+                });
+            }
+        });
+        
+        // =============================================
+        // NAVIGATION SMOOTH SCROLLING
+        // =============================================
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        console.log("JavaScript Demo - JavaDev initialized!");
+        console.log("Click on different demo buttons to see JavaScript in action!");
+    </script>
+</body>
+</html>
